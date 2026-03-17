@@ -1,8 +1,8 @@
-package JeuVideo;
+package JeuVideo2;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import JeuVideo2.*;
 
 public class Grille {
 
@@ -27,7 +27,6 @@ public class Grille {
         implementElement();
 	
 	}
-	
 
 	
 	
@@ -132,43 +131,60 @@ public class Grille {
 	
 	Random random= new Random(); // pour avoir quelque chose d'aleatoire plus tard dans le code
 	
-	public void implementElement() {
+	public void implementElement() {// pour la deuxieme parti du jeu avec les divers éléments
 
-	    int CasesParcourues = 0;
-	    int limite = (int)(totalCasesGrille * 0.3); // 30% des cases
-	    int i = 0, j = 0; // indices pour parcourir la grille
+		int casesParcourues = 0;
+	    int limite = (int)(totalCasesGrille * 0.3); // maximum 30% des cases
+	    int i = 0, j = 0;
 
-	    while (CasesParcourues < limite) {
+	    while (casesParcourues < limite) {
 
-	        if (i >= nbLignes) break; // sécurité
+	        if (i >= nbLignes) break;
+
 	        if (j >= nbColonnes) {
 	            j = 0;
 	            i++;
 	            if (i >= nbLignes) break;
 	        }
 
-	        int lancerDé = random.nextInt(2);
+	        int lancerDe = random.nextInt(2);
 
-	        if (lancerDé == 1) {
+	        if (lancerDe == 1) {
+
 	            nbElement++;
 	            Cellule position = grille[i][j];
 
-	            int energie = random.nextInt(10) + 1;
+	            int type = random.nextInt(3); // 3 types d'éléments
+	            Element element = null;
 
-	            // 60% positif, 40% négatif
-	            if (random.nextInt(100) >= 60) energie = -energie;
+	            if (type == 0) {
 
-	            Element element = new JeuVideo.Element(nbElement, energie, position);
-	            position.setElement(element); // important
+	                Predateur p = new Predateur(15, position);
+	                element = new AdaptateurPredateur(p);
+
+	            } 
+	            else if (type == 1) {
+
+	                Feu f = new Feu(3,position);
+	                element = new AdaptateurFeu(f);
+
+	            } 
+	            else {
+
+	                Fruit fv = new Fruit(10,position);
+	                element = new AdaptateurFruit(fv);
+
+	            }
+
+	            position.setElement(element);
 	        }
 
-	        CasesParcourues++;
-	        j++; // passer à la colonne suivante
+	        casesParcourues++;
+	        j++;
 	    }
 
 	    System.out.println("Création terminée : " + nbElement + " éléments créés");
 	}
-	
 	
 	public void placeElement() {
 		
@@ -185,6 +201,7 @@ public class Grille {
 		}
 		
 	}
+	
 	
 
 	

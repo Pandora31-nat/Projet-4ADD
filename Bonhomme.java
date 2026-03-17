@@ -1,7 +1,9 @@
-package JeuVideo;
+package JeuVideo2;
 
 import java.util.List;
 import java.util.Scanner;
+
+import JeuVideo2.strat.Strategie;
 
 public class Bonhomme extends Joueur {
 	
@@ -10,6 +12,7 @@ public class Bonhomme extends Joueur {
 	public Bonhomme(int id, Cellule position, int energie, Grille grille) {
 		super(id, position, energie, grille);
 		this.grille= grille;
+		seDeplacer();
 		
 	}
 
@@ -22,7 +25,7 @@ public class Bonhomme extends Joueur {
 				//utilisateur ecrit dans la console 
 				 Scanner scanner = new Scanner(System.in);
 
-				    System.out.println("Choisissez une case :");
+				    System.out.println("Joueur: "+ id+ " Choisissez une case :");
 				    
 				    //on parcourt les cases adjacentes et size c cb elements dans la liste 
 				    for (int i = 0; i < adjacentes.size(); i++) {
@@ -49,6 +52,16 @@ public class Bonhomme extends Joueur {
 				   
 			    return position;
 
+	}
+	
+	public boolean aVisite(Cellule c) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public void setStrategie(Strategie s1) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
