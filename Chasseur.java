@@ -31,6 +31,7 @@ public class Chasseur extends Joueur{
 	    		 if (c.equals(bonhomme.getPosition())) {
 	    			  position = c;
 	                  System.out.println("Le chasseur a trouvé le bonhomme ! Partie terminée pour lui.");
+					 	bonhomme== null;
 	                  // Energie diminue quand même
 	                  energie -= 1;
 	                  return position;
@@ -74,18 +75,6 @@ public class Chasseur extends Joueur{
 	    
 		return position;
 	}
-	
-	public boolean eliminer(Bonhomme b) {
-		if((b.getPosition()== position)) {
-			
-			System.out.println("Le bonhomme et toi êtes sur la même position. Tu l'as donc eliminer");
-			b.setVivant(false);
-			return true;
-		}else {
-			System.out.println("Tu n'es pas sur la même position que le bonhome tu ne peux donc pas l'eliminer");
-			return false;
-		}
-		
 		
 	}
 }
