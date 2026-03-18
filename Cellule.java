@@ -50,20 +50,6 @@ public class Cellule {
 	        return "(" + x + ", " + y + ")";
 	    }
 	 
-	 @Override // pour faire marcher la methode eliminer de chasseur car on compare des positions
-	 public boolean equals(Object obj) {
-	     if(this == obj) return true;           // même référence
-	     if(obj == null || getClass() != obj.getClass()) return false;
-
-	     Cellule other = (Cellule) obj;
-	     return this.x == other.x && this.y == other.y;
-	 }
-
-	 @Override
-	 public int hashCode() {
-	     return 31 * x + y;
-	 }
-	
 	public void removeElement() { // enlever l'element une fois que son energie à été prise par le joueur
 		element= null;
 	}
