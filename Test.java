@@ -7,7 +7,7 @@ public class Test {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		Grille grille, grille2;
+		Grille grille;
 		
 		grille= new Grille(20,20);
 		System.out.println("On a une grille de "+ grille.getNbLignes()+" lignes et "+ grille.getNbColonnes()+ " colonnes");
@@ -69,7 +69,6 @@ public class Test {
 		//joueur1.seDeplacer();
 		//joueur3.seDeplacer();
 		
-		((Chasseur) joueur2).eliminer((Bonhomme)joueur3); // OK
 		// joueur1.eliminer(); ne fonctionne pas car j'initialise les joueur avec la classe Joueur.
 		joueur4.seDeplacer();
 		
